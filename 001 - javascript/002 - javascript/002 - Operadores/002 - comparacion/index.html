@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introducción a Javascript</title>
+  </head>
+  <body>
+    <h1>Operadores de comparación</h1>
+    <div>
+      <fieldset>
+        <legend>«Comparación de dos cadenas»</legend>
+        <p>
+          <label for="cadena1">Cadena 1:</label>
+          <input
+            type="text"
+            name="cadena1"
+            id="cadena1"
+            placeholder="Introduce un primer valor"
+            minlength="1"
+            required
+          />
+        </p>
+        <p>
+          <label for="cadena2">Cadena 2:</label>
+          <input
+            type="text"
+            name="cadena2"
+            id="cadena2"
+            placeholder="Introduce un segundo valor"
+            minlength="1"
+            required
+          />
+        </p>
+        <p>
+          <label for="comparar">Comparar:</label>
+          <button onclick="comparar()" name="comparar">¿Son iguales?</button>
+        </p>
+        <p id="destino">Resultado:</p>
+      </fieldset>
+    </div>
+    <script src="001 - comparacion.js"></script>
+  </body>
+</html>

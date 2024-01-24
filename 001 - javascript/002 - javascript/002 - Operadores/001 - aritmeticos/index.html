@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introducción a Javascript</title>
+  </head>
+  <body>
+    <h1>Operadores aritméticos</h1>
+    <div>
+      <fieldset>
+        <legend>«Suma de dos cifras»</legend>
+        <p>
+          <label for="cifra1">Cifra 1:</label>
+          <input
+            type="number"
+            name="cifra1"
+            id="cifra1"
+            placeholder="Introduce la primera cifra"
+            min="0"
+            required
+          />
+        </p>
+        <p>
+          <label for="cifra2">Cifra 2:</label>
+          <input
+            type="number"
+            name="cifra2"
+            id="cifra2"
+            placeholder="Introduce la segunda cifra"
+            min="0"
+            required
+          />
+        </p>
+        <p>
+          <label for="suma">Calcular:</label>
+          <button onclick="calcularSuma()" name="suma">Suma</button>
+        </p>
+        <p id="destino">Resultado:</p>
+      </fieldset>
+    </div>
+    <script src="001 - aritmetico.js"></script>
+  </body>
+</html>

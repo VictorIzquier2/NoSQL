@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introducción a Javascript</title>
+  </head>
+  <body>
+    <h1>Operadores abreviados</h1>
+    <div>
+      <fieldset>
+        <legend>«Incrementos y decrementos»</legend>
+        <p>
+          <label for="cifra">Cifra:</label>
+          <input
+            type="number"
+            name="cifra"
+            id="cifra"
+            placeholder="Introduce una cifra"
+            min="0"
+            required
+          />
+        </p>
+        <p>
+          <label for="sumando">Sum:</label>
+          <input
+            type="number"
+            name="sumando"
+            id="sumando"
+            placeholder="Introduce un sumando"
+            min="0"
+            required
+          />
+        </p>
+        <p>
+          <button onclick="variacion()">Agregar sumando</button>
+          <button onclick="sumarUno()">+1</button>
+          <button onclick="restarUno()">-1</button>
+        </p>
+      </fieldset>
+    </div>
+    <script src="003 - incrementos.js"></script>
+  </body>
+</html>
