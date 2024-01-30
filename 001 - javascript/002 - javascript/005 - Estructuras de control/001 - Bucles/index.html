@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estructuras de control</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <h1>La estructura de control for</h1>
+  <div id="contenedor1" class="contenedor"></div>
+  <div id="contenedor2" class="contendor"></div>
+  <br>
+  <h1>La estructura de control while</h1>
+  <div id="contenedor3" class="contenedor"></div>
+  <br>
+  <h1>La estructura de control if</h1>
+  <div id="contenedor4" class="contendor">
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" name="edad" placeholder="Escribe tu edad"/>
+    <button id="comprobar_edad">Comprobar</button>
+  </div>
+  <br>
+  <h1>La estructura de control Switch</h1>
+  <div id="contenedor5" class="contendor">
+    <label for="dia_semana">Dia de la semana:</label>
+    <input type="text" id="dia_semana" name="dia_semana" placeholder="Escribe el día de la semana"/>
+    <button id="comprobar_dia_semana">Comprobar</button>
+  </div>
+  <br>
+  <h1>Funciones</h1>
+   <div id="contenedor6" class="contendor">
+     <label for="cifra1">Cifra 1:</label>
+     <input type="number" name="cifra1" id="cifra1" placeholder="Escribe una cifra">
+     <label for="cifra2">Cifra 2:</label>
+     <input type="number" name="cifra2" id="cifra2" placeholder="Escribe una cifra">
+     <select name="operacion" id="operacion">
+       <option value="">--Selecciona una operación--</option>
+       <option value="sumar">Sumar</option>
+       <option value="restar">Restar</option>
+       <option value="multiplicar">Multiplicar</option>
+       <option value="dividir">Dividir</option>
+     </select>
+     <button id="comprobar_operacion">Comprobar</button> 
+  </div>
+  <h1>Clase Cliente</h1>
+  <div id="contenedor7" class="contendor">
+     <label for="nombre">Nombre:</label>
+     <input type="text" name="nombre" id="nombre" placeholder="Escribe un nombre">
+     <label for="apellido">Apellido:</label>
+     <input type="text" name="apellido" id="apellido" placeholder="Escribe un apellido">
+     <input type="radio" name="sexo" id="hombre" value="hombre">
+     <label for="hombre">Hombre</label>
+     <input type="radio" name="sexo" id="mujer" value="mujer">
+     <label for="mujer">Mujer</label>
+     <input type="radio" name="sexo" id="otro" value="otro">
+     <label for="otro">Otro</label>
+     </select>
+     <button id="guardar_cliente">Guardar</button> 
+  </div>
+  <script src="js/scripts.js" type="text/javascript"></script>
+</body>
+</html>

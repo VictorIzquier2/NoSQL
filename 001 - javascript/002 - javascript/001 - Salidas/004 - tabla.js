@@ -5,6 +5,6 @@ function Persona(nombre, apellido){
   this.apellido = apellido
 }
 
-const me = new Persona("Victor", "Izquierdo")
+const ME = new Persona("Victor", "Izquierdo")
 
-console.table(me)
+console.table(ME)
