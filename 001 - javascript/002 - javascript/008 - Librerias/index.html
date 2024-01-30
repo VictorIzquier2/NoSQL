@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Librerías</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <h1>ASCII</h1>
+  <div id="recuadro" class="recuadro">
+    <div id="contenedor" class="contenedor">
+      <label for="radio">Círculo:</label>
+      <input type="number" id="radio" name="radio" min="1" placeholder="Escribe el radio">
+      <select name="color" id="color">
+        <option value="" selected>--Selecciona un color--</option>
+        <option value="black">Negro</option>
+        <option value="white">Blanco</option>
+        <option value="red">Rojo</option>
+        <option value="lime">Lima</option>
+        <option value="blue">Azul</option>
+        <option value="yellow">Amarillo</option>
+        <option value="cyan">Cian</option>
+        <option value="magenta">Magenta</option>
+        <option value="silver">Plata</option>
+        <option value="gray">Gris</option>
+        <option value="maroon">Granate</option>
+        <option value="olive">Oliva</option>
+        <option value="green">Verde</option>
+        <option value="purple">Púrpura</option>
+        <option value="teal">Verde azulado</option>
+        <option value="navy">Azul marino</option>
+      </select>
+      <button id="dibujar">Dibujar</button>
+    </div>
+    <canvas id="miCanvas" class="canvas" width="400" height="400"></canvas>
+  </div><br>
+  <div id="contenedor2" class="contenedor">
+    <label for="tecla">Tecla:</label>
+    <input type="text" id="tecla" name="tecla" placeholder="Pulsa una tecla">
+    <div id="codigoAscii" class="ascii"></div>
+  </div>
+  <script type="module" src="js/Circulo.js"></script>
+  <script type="module" src="js/scripts.js"></script>
+</body>
+</html>
