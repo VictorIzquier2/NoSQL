@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mecanografía</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="css/estilos.css" type="text/css">
 </head>
 <body>
@@ -66,7 +65,6 @@
       <div class="tecla" id="shift">⇧</div>
     </div>
     <div id="fila4" class="fila">
-      <div class="tecla" id="meta"><i class="fab fa-windows"></i></div>
       <div class="tecla" id="alt">Alt</div>
       <div class="tecla" id="space"></div>
       <div class="tecla" id="altgraph">Alt<sub>Gr</sub></div>
@@ -75,6 +73,9 @@
   </div>
   <div id="pulsaciones_minuto">Pulsaciones por minuto: </div>
   <div id="texto_escrito"></div>
+  <div id="contiene_lienzo">
+    <canvas id="lienzo" width="720" height="128"></canvas>
+  </div>
   <script type="module" src="js/scripts.js"></script>
 </body>
 </html>

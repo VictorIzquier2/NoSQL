@@ -2,6 +2,8 @@
 window.onload = function(){
   var teclaspulsadas = [] // Teclas mostradas
   var teclasExcluidas = ["Shift", "Control", "Meta", "Alt", "AltGraph", "Dead", "Quote", "BracketLeft", "Enter", "Space", "Backspace", "Insert", "Home", "PageUp", "End", "Delete", "PageDown", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]; // Teclas ocultadas
+  var contexto = document.getElementById('lienzo').getContext("2d");
+  var contador = 0;
   var textoEscrito;
   var tiempoInicio, tiempoFinal, diferenciaTiempo;
   var nTeclasPulsadas, pulsacionesPorMinuto;
@@ -58,6 +60,11 @@ window.onload = function(){
     pulsacionesPorMinuto = nTeclasPulsadas/(diferenciaTiempo/60);
     pulsacionesPorMinuto = Math.ceil(pulsacionesPorMinuto)
     
+    document.getElementById('pulsaciones_minuto').innerHTML = `Pulsaciones por Minuto: ${pulsacionesPorMinuto}`;
+    contador++;
+    contexto.fillRect(contador, 128, 1, 0 - pulsacionesPorMinuto/5)
+    
+    // Mostrar datos por consola
     console.clear()
     console.table(teclaspulsadas)
     console.log("Tiempo final: " + tiempoFinal)
@@ -66,8 +73,6 @@ window.onload = function(){
     console.log("Nº de teclas pulsadas: " + nTeclasPulsadas)
     console.log("Nº de pulsaciones por minuto: " + pulsacionesPorMinuto)
 
-    document.getElementById('pulsaciones_minuto').innerHTML = `Pulsaciones por Minuto: ${pulsacionesPorMinuto}`
-    
     const limpiarTexto = (idElemento)=> {
       const altoDocumento = document.documentElement.scrollHeight;
       const alturaPantalla = window.innerHeight;
