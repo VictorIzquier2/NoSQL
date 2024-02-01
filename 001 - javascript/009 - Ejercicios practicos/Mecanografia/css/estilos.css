@@ -1,0 +1,120 @@
+body{
+  background-color: grey;
+}
+
+#teclado{
+  margin: auto;
+  padding: .25em;
+  background-color: ghostwhite;
+  border: 1px solid grey;
+  border-radius: 1em;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, .3);
+}
+.fila{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#fila0{
+  padding: 0;
+}
+#fila1{
+  padding: 0 2em;
+}
+#fila2{
+  padding-left: 4em;
+}
+#fila3{
+  padding-left: 6em;
+}
+#fila4{
+  padding-left: 2em;
+}
+.tecla{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3em;
+  height: 3em;
+  border: 1px solid grey;
+  font-family: 'Courier New', Courier, monospace;
+  margin: .3em;
+  border-radius: .3em;
+  text-align: center;
+  font-size: 2em;
+}
+.tecla sub{
+  font-size: .7em;
+  vertical-align: sub;
+  align-self: flex-end;
+  margin-bottom: 1em;
+  padding-left: .33em;
+}
+.tecla sup{
+  position: absolute;
+  top: .7em;
+  font-size: .7em;
+  vertical-align: super;
+  align-self: flex-start;
+  padding-left: .33em;
+}
+#fila4 .tecla{
+  font-size: 1.3em;
+  padding: .9em;
+  margin: .4em;
+  border-radius: .6em;
+}
+#space{
+  width: 32em;
+}
+#shift{
+  width: 5.5em;
+}
+.tecla_correcta{
+  background-color: green;
+}
+.tecla_incorrecta{
+  background-color: red;
+}
+#texto_escrito{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 96%;
+  height: auto;
+  min-height: 1.5em;
+  padding: .6em;
+  margin: auto;
+  margin-top: .6em;
+  background-color: ghostwhite;
+  border: 1px solid grey;
+  border-radius: .5em;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, .3) inset;
+  text-align: start;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2em;
+  word-wrap: break-word;
+  word-break: break-all;
+  
+}
+#pulsaciones_minuto{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 40%;
+  height: auto;
+  min-height: 1.5em;
+  padding: .6em;
+  margin: auto;
+  margin-top: .6em;
+  background-color: aliceblue;
+  border: 1px solid grey;
+  border-radius: .5em;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, .3) inset;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-variant: small-caps;
+  font-size: 1.2em;
+}
