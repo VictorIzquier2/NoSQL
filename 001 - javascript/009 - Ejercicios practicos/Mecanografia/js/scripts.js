@@ -1,7 +1,7 @@
 
 window.onload = function(){
   var teclaspulsadas = [] // Teclas mostradas
-  var teclasExcluidas = ["Shift", "Control", "Meta", "Alt", "AltGraph", "Dead", "Quote", "BracketLeft", "Enter", "Space", "Backspace", "Insert", "Home", "PageUp", "End", "Delete", "PageDown", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]; // Teclas ocultadas
+  const TECLAS_EXCLUIDAS = ["Shift", "Control", "Meta", "Alt", "AltGraph", "Dead", "Quote", "BracketLeft", "Enter", "Space", "Backspace", "Insert", "Home", "PageUp", "End", "Delete", "PageDown", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]; // Teclas ocultadas
   var contexto = document.getElementById('lienzo').getContext("2d");
   var contador = 0;
   var textoEscrito;
@@ -14,53 +14,67 @@ window.onload = function(){
     
     // Código actual de teclas (keyCode desfasado)
     tecla = e.key;
-    
-    if (tecla === "Backspace"){ // Borrar caracteres
-      e.preventDefault();
-      textoEscrito = document.getElementById('texto_escrito').innerHTML;
-      document.getElementById('texto_escrito').innerHTML = textoEscrito.slice(0, -1);
+
+    const validarTecla = (tecla)=>{
+
+      if (tecla === "Backspace"){ // Borrar caracteres
+        e.preventDefault();
+        textoEscrito = document.getElementById('texto_escrito').innerHTML;
+        document.getElementById('texto_escrito').innerHTML = textoEscrito.slice(0, -1);
+      }
+      
+      // Si las teclas son de acentos UTF-8 (e.code)
+      if(tecla === "Dead"){
+        switch (e.code) {
+          case "BracketLeft":
+            tecla = "BracketLeft"
+            break;
+          case "Quote":
+            tecla = "Quote"
+            break;
+        }
+      }
+      if(tecla === " "){tecla = "space"}
+      return tecla;
     }
- 
-    // Si las teclas son de acentos UTF-8 (e.code)
-    if(tecla === "Dead"){
-      switch (e.code) {
-        case "BracketLeft":
-          tecla = "BracketLeft"
-          break;
-        case "Quote":
-          tecla = "Quote"
-          break;
+
+    const aplicarEstilo = (idElemento, estiloCSS)=>{
+      elemento = document.getElementById(idElemento); // Localizar id en el DOM
+      if(elemento){
+        elemento.classList.add(estiloCSS); // Si existe, aplicar estilo
+      }
+
+    }
+
+    const escribirTablero = (tecla)=> {
+      if (TECLAS_EXCLUIDAS.includes(tecla)){ // comprobar teclas excluidas
+        console.clear()
+        console.table(tecla + " presionada, acción excluída.");
+        return;
+      }else{
+        if(tecla === "space"){tecla = " "}
+        document.getElementById('texto_escrito').innerHTML += tecla; // Escribir
+        teclaspulsadas.push({"tecla": tecla, "epoch":  Date.now()}) // Registrar
       }
     }
-    if(tecla === " "){tecla = "space"}
+
+    const escribirPPM = (teclaspulsadas)=>{
+      // Pulsaciones por minuto
+      tiempoFinal = teclaspulsadas[teclaspulsadas.length-1]["epoch"]
+      tiempoInicio = teclaspulsadas[0]['epoch']
+      diferenciaTiempo = (tiempoFinal * 1 - tiempoInicio * 1)/1000
+      nTeclasPulsadas = teclaspulsadas.length
+      pulsacionesPorMinuto = nTeclasPulsadas/(diferenciaTiempo/60);
+      pulsacionesPorMinuto = Math.ceil(pulsacionesPorMinuto)
+      document.getElementById('pulsaciones_minuto').innerHTML = `Pulsaciones por Minuto: ${pulsacionesPorMinuto}`;
+    }
 
     // Pasamos a minúsculas
-    minuscula = tecla.toLowerCase();
-    elemento = document.getElementById(minuscula); // Localizar id en el DOM
-    if(elemento){
-      elemento.classList.add('tecla_correcta'); // Si existe, aplicar estilo
-    }
-    if (teclasExcluidas.includes(tecla)){ // comprobar teclas excluidas
-      console.clear()
-      console.table(teclaspulsadas)
-      console.table(tecla + " presionada, acción excluída.");
-      return;
-    }else{
-      if(tecla === "space"){tecla = " "}
-      document.getElementById('texto_escrito').innerHTML += tecla; // Escribir
-    }
+    minuscula = validarTecla(tecla).toLowerCase();
+    aplicarEstilo(minuscula, 'tecla_correcta');
+    escribirTablero(tecla);    
+    escribirPPM(teclaspulsadas);
     
-    teclaspulsadas.push({"tecla": tecla, "epoch":  Date.now()}) // Registrar
-    
-    // Pulsaciones por minuto
-    tiempoFinal = teclaspulsadas[teclaspulsadas.length-1]["epoch"]
-    tiempoInicio = teclaspulsadas[0]['epoch']
-    diferenciaTiempo = (tiempoFinal * 1 - tiempoInicio * 1)/1000
-    nTeclasPulsadas = teclaspulsadas.length
-    pulsacionesPorMinuto = nTeclasPulsadas/(diferenciaTiempo/60);
-    pulsacionesPorMinuto = Math.ceil(pulsacionesPorMinuto)
-    
-    document.getElementById('pulsaciones_minuto').innerHTML = `Pulsaciones por Minuto: ${pulsacionesPorMinuto}`;
     contador++;
     contexto.fillRect(contador, 128, 1, 0 - pulsacionesPorMinuto/5)
     
