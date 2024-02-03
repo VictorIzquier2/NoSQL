@@ -3,6 +3,8 @@ import { ElementoGUI } from "./ElementoGUI.js";
 export class Dictado extends ElementoGUI{
   static _cursor = 0;
   static _texto;
+  static _lineas = []
+  static _indiceLineaActual = 0;
 
   
   static get texto(){
@@ -11,6 +13,7 @@ export class Dictado extends ElementoGUI{
   static set texto(nuevoTexto){
     Dictado._texto = nuevoTexto;
     Dictado._cursor = 0;
+    
   }
   static get cursor(){
     return Dictado._cursor;
@@ -29,9 +32,21 @@ export class Dictado extends ElementoGUI{
       const respuesta = await fetch(urlAPI);
       const datos = await respuesta.json();
       const texto = datos.body;
-      Dictado.escribir(texto, idElemento);
+      Dictado._lineas = texto.split('\n');
+      Dictado.escribir(Dictado._lineas[0], idElemento);
     }catch (error){
       console.error("Error al cargar el texto desde la API", error);
+    }
+  }
+
+  static siguienteLinea(idElemento){
+    Dictado._indiceLineaActual++;
+    if(Dictado._indiceLineaActual < Dictado._lineas.length){
+      Dictado._texto = Dictado._lineas[Dictado._indiceLineaActual];
+      Dictado._cursor = 0;
+      document.getElementById(idElemento).innerHTML = Dictado._texto;
+    }else{
+      document.getElementById(idElemento).innerHTML = "— FIN —";
     }
   }
 

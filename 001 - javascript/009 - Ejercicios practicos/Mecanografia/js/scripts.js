@@ -1,3 +1,4 @@
+import { TECLAS_EXCLUIDAS } from "./TECLAS_EXCLUIDAS.js";
 import { TecladoVirtual } from "./TecladoVirtual.js";
 import { Dictado } from "./Dictado.js";
 import { Tablero } from "./Tablero.js";
@@ -16,7 +17,7 @@ window.onload = function(){
     TecladoVirtual.aplicarEstilo(TecladoVirtual.validarTecla(e), 'tecla_correcta');
     
     // Linea de escritura
-    Tablero.escribir(e, 'texto_escrito');
+    Tablero.escribir(e, 'texto_escribir', 'texto_escrito');
     Tablero.borrar(e, 'texto_escrito');
 
     // PPM y Grafica
