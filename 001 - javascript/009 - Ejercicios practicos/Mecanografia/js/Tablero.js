@@ -1,22 +1,7 @@
+import { ElementoGUI } from "./ElementoGUI.js";
 import { TECLAS_EXCLUIDAS } from "./TECLAS_EXCLUIDAS.js";
-
-export class Tablero{
-  static _evento;
-  static _idElemento;
-
-  static get evento(){
-    return Tablero._evento;
-  }
-  static set evento(nuevoEvento){
-    Tablero._evento = nuevoEvento;
-  }
-
-  static get idElemento(){
-    return Tablero._idElemento;
-  }
-  static set idElemento(nuevoIdElemento){
-    Tablero._idElemento = nuevoIdElemento;
-  }
+import { Dictado } from "./Dictado.js";
+export class Tablero extends ElementoGUI{
 
   static escribir(evento, idElemento){
     let tecla = evento.key;
@@ -26,9 +11,24 @@ export class Tablero{
       return;
     }else{
       if(tecla === 'space'){tecla = " "}
-      document.getElementById(idElemento).innerHTML += tecla; 
+      this.comprobar(tecla, idElemento);
     }
   }
+
+  static comprobar(tecla, idElemento){
+    let textoDictado = Dictado.texto;
+    let cursor = Dictado.cursor;
+    let elementoTexto = document.getElementById(idElemento);
+
+    if(textoDictado[cursor].toLowerCase() === tecla.toLowerCase()){
+      Dictado.incrementarCursor();
+      elementoTexto.style.backgroundColor = "palegreen";
+      elementoTexto.innerHTML = textoDictado.substr(0, cursor+1);
+    }else{
+      elementoTexto.style.backgroundColor = "lightpink";
+    }
+  }
+
   static borrar(evento, idElemento){
     if(evento.key === "Backspace"){
       let texto = document.getElementById(idElemento).innerHTML;

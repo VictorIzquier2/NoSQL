@@ -1,22 +1,7 @@
+import { ElementoGUI } from "./ElementoGUI.js";
 
-
-export class Marcador{
-  static _evento;
+export class Marcador extends ElementoGUI{
   static _teclaspulsadas;
-
-  static get evento(){
-    return Tablero._evento;
-  }
-  static set evento(nuevoEvento){
-    Tablero._evento = nuevoEvento;
-  }
-
-  static get idElemento(){
-    return Tablero._idElemento;
-  }
-  static set idElemento(nuevoIdElemento){
-    Tablero._idElemento = nuevoIdElemento;
-  }
 
   static get teclaspulsadas(){
     return Marcador._teclaspulsadas;
@@ -31,10 +16,10 @@ export class Marcador{
 
     teclaspulsadas.push({"tecla": evento.key, "epoch": Date.now()})
     tiempoFinal = teclaspulsadas[teclaspulsadas.length-1]["epoch"]
-    tiempoInicio = teclaspulsadas[0]['epoch']
+    tiempoInicio = teclaspulsadas[teclaspulsadas.length-11]['epoch']
     diferenciaTiempo = (tiempoFinal * 1 - tiempoInicio * 1)/1000
     nTeclasPulsadas = teclaspulsadas.length
-    pulsacionesPorMinuto = nTeclasPulsadas/(diferenciaTiempo/60);
+    pulsacionesPorMinuto = 10/(diferenciaTiempo/60);
     pulsacionesPorMinuto = Math.ceil(pulsacionesPorMinuto)
     document.getElementById(idElemento).innerHTML = `Pulsaciones por Minuto: ${pulsacionesPorMinuto}`;
     return pulsacionesPorMinuto;

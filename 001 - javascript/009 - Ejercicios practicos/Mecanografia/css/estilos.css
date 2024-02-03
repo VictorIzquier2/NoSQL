@@ -22,7 +22,7 @@ body{
   padding: 0 2em;
 }
 #fila2{
-  padding-left: 4em;
+  padding-left: 3em;
 }
 #fila3{
   padding-left: 6em;
@@ -77,7 +77,7 @@ body{
 .tecla_incorrecta{
   background-color: red;
 }
-#texto_escrito{
+#texto_escrito, #texto_escribir{
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -96,7 +96,10 @@ body{
   font-size: 2em;
   word-wrap: break-word;
   word-break: break-all;
-  
+}
+#texto_escribir{
+  background-color: aliceblue;
+  justify-content: center;
 }
 #pulsaciones_minuto{
   display: flex;

@@ -1,25 +1,8 @@
+import { ElementoGUI } from "./ElementoGUI.js";
 
-
-export class TecladoVirtual{
-  static _evento;
-  static _idElemento;
+export class TecladoVirtual extends ElementoGUI{
   static _estiloCSS;
   
-
-  static get evento(){
-    return TecladoVirtual._evento;
-  }
-  static set evento(nuevoEvento){
-    TecladoVirtual._evento = nuevoEvento;
-  }
-
-  static get idElemento(){
-    return TecladoVirtual._idElemento;
-  }
-  static set idElemento(nuevoIdElemento){
-    TecladoVirtual._idElemento = nuevoIdElemento;
-  }
-
   static get estiloCSS(){
     return TecladoVirtual._estiloCSS;
   }

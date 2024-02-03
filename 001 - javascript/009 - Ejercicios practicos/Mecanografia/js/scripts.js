@@ -1,4 +1,5 @@
 import { TecladoVirtual } from "./TecladoVirtual.js";
+import { Dictado } from "./Dictado.js";
 import { Tablero } from "./Tablero.js";
 import { Marcador } from "./Marcador.js";
 import { Grafica } from "./Grafica.js";
@@ -6,12 +7,14 @@ import { Grafica } from "./Grafica.js";
 window.onload = function(){
   var teclaspulsadas = [] // Teclas mostradas
   
+  Dictado.cargarTextoDesdeApi('https://jsonplaceholder.typicode.com/posts/1', 'texto_escribir')
+  
   // Al pulsar una tecla
   document.onkeydown = (e)=> { 
     
     // Teclado
     TecladoVirtual.aplicarEstilo(TecladoVirtual.validarTecla(e), 'tecla_correcta');
-
+    
     // Linea de escritura
     Tablero.escribir(e, 'texto_escrito');
     Tablero.borrar(e, 'texto_escrito');
@@ -23,6 +26,7 @@ window.onload = function(){
     console.clear()
     console.table(teclaspulsadas)
 
+    // Limpiar tablero
     Tablero.limpiar('texto_escrito');
     
   }
