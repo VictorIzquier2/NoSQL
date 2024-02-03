@@ -1,0 +1,1 @@
+export const TECLAS_EXCLUIDAS = ["Shift", "Control", "Meta", "Alt", "AltGraph", "Dead", "Quote", "BracketLeft", "Enter", "Space", "Backspace", "Insert", "Home", "PageUp", "End", "Delete", "PageDown", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
