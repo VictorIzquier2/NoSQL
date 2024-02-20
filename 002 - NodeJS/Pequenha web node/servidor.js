@@ -4,7 +4,8 @@ var ruta = require('url');
 
 servidor.createServer((req, res) => {
     let rutaArchivo = '';
-    let rutaCompleta = ruta.parse(req, true);
+    let rutaCompleta = ruta.parse(req.url, true);
+    let fecha = new Date();
 
     switch (req.url) {
         case "/":
@@ -38,7 +39,7 @@ servidor.createServer((req, res) => {
           res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
           res.end(data);
           if(req.url != "/favicon.ico"){
-            archivos.appendFile('registro.txt', rutaCompleta.host+"," + rutaCompleta.pathname+"," + rutaCompleta.search + "," + req.url+"\n", (err)=>{
+            archivos.appendFile('registro.txt', fecha.getFullYear()+ "," + fecha.getMonth() + "," + fecha.getDate()+ "," + fecha.getHours() + "," + fecha.getMinutes() + "," + fecha.getSeconds() + "," + rutaCompleta.host+"," + rutaCompleta.pathname+"," + rutaCompleta.search + "," + req.url+"\n", (err)=>{
               if(err) throw err;
             });
           }
