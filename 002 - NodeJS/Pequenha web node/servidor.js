@@ -1,8 +1,10 @@
 var servidor = require('http');
 var archivos = require('fs');
+var ruta = require('url');
 
 servidor.createServer((req, res) => {
     let rutaArchivo = '';
+    let rutaCompleta = ruta.parse(req, true);
 
     switch (req.url) {
         case "/":
@@ -35,7 +37,11 @@ servidor.createServer((req, res) => {
           // Si el archivo se lee correctamente, envía los datos
           res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
           res.end(data);
-        }
-        
+          if(req.url != "/favicon.ico"){
+            archivos.appendFile('registro.txt', rutaCompleta.host+"," + rutaCompleta.pathname+"," + rutaCompleta.search + "," + req.url+"\n", (err)=>{
+              if(err) throw err;
+            });
+          }
+        }    
     });
 }).listen(80, () => console.log("Servidor corriendo en el puerto 80"));
