@@ -1,0 +1,26 @@
+
+
+<h1 class="titulo">Contacto</h1>
+<p>¿Tienes alguna pregunta? No dudes en contactarnos</p>
+<form class="formulario" action="/procesa" method="POST" enctype="application/x-www-form-urlencoded">
+  <div class="contenedor-campos">
+    <div class="campo">
+      <label for="nombre">Nombre:</label>
+      <input class="entrada" type="text" name="nombre" placeholder="Escribe tu nombre" /><br>
+    </div>
+    <div class="campo">
+      <label for="asunto">Asunto:</label>
+      <input class="entrada" type="text" name="asunto" placeholder="Escribe el asunto" /><br>
+    </div>
+    <div class="campo">
+      <label for="email">Email:</label>
+      <input class="entrada" type="email" name="email" placeholder="Escribe tu email" /><br>
+    </div>
+    <div class="campo">
+      <textarea class="entrada" name="mensaje" placeholder="Escribe tu mensaje"></textarea><br>
+    </div>
+    <div class="campo alineado-derecha flex">
+      <input class="boton w-sm-100" type="submit" value="Enviar" />
+    </div>
+  </div>
+</form>
