@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs').promises; // Asegúrate de usar fs.promises para trabajar con async/await
 const url = require('url');
 const path = require('path');
+var procesador = require('querystring');
 const mysql = require('mysql');
 
 const servidor = http.createServer(async (req, res) => {
@@ -91,6 +92,14 @@ const servidor = http.createServer(async (req, res) => {
             rutaArchivo = 'contacto.html';
             break;
         case "/procesa":
+            let datos = '';
+            req.on('data', parte => datos += parte.toString());
+            req.on('end', ()=> {
+              let cadena = datos;
+              let procesado = procesador.parse(cadena);
+              console.log(procesado);
+            })
+
             rutaArchivo = 'procesa.html';
             break;
         default:
