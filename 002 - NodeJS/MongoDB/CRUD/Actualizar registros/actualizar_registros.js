@@ -1,0 +1,1 @@
+db.formularios.updateMany({fecha:"2024-02-26"},{$set:{fecha:"2024-02-27"}});

@@ -4,6 +4,20 @@ const url = require('url');
 const path = require('path');
 var procesador = require('querystring');
 const mysql = require('mysql');
+const mongoose = require('mongoose');
+
+// Conexión a Mongodb
+const conexionMongo = 'mongodb://127.0.0.1/contacto';
+
+// Definir el esquema y modelo para los formularios de contacto
+const formularioSchema = new mongoose.Schema({
+    nombre: String,
+    asunto: String,
+    email: String,
+    mensaje: String
+});
+
+const Formulario = mongoose.model("Formulario", formularioSchema);
 
 const servidor = http.createServer(async (req, res) => {
     let rutaArchivo = '';
@@ -94,12 +108,31 @@ const servidor = http.createServer(async (req, res) => {
         case "/procesa":
             let datos = '';
             req.on('data', parte => datos += parte.toString());
-            req.on('end', ()=> {
-              let cadena = datos;
-              let procesado = procesador.parse(cadena);
+            req.on('end', async ()=> {
+              let procesado = procesador.parse(datos);
               console.log(procesado);
-            })
+              
+              let nFormulario = new Formulario(procesado);
 
+              if(procesado.nombre && procesado.asunto && procesado.email && procesado.mensaje){
+                  // Guardar en MongoDB
+                  try{
+                      mongoose.connect(conexionMongo)
+                        .then(()=>{
+                            console.log("Conectado a Mongodb")
+                            nFormulario.save();
+                            console.log("Formulario guardado con éxito.");
+                        })
+                    }catch(err){
+                        console.error("Error guardando el formulario: ", err);
+                        res.writeHead(500, {'Content-Type': 'text/html; charset=utf-8'});
+                        res.end("Error interno del servidor al procesar el formulario");
+                    }
+              } else {
+                console.log("Datos del formulario incompletos.");
+              }
+
+            });
             rutaArchivo = 'procesa.html';
             break;
         default:
